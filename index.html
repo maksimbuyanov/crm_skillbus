@@ -12,7 +12,9 @@
 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script defer src="./js/script.js"></script>
+
+    <script type="module" defer src="./js/script.js"></script>
+
     <title>CRM</title>
 </head>
 
@@ -36,43 +38,41 @@
                     <span class="legend__text">
                         ID
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort arrow up" class="legend__arrow">
+                    <span class="icon legend__arrow-up"></span>
                 </li>
                 <li class="legend__item  legend__name">
                     <span class="legend__text">
                         Фамилия Имя Отчество
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort-arrow" class="legend__arrow">
+                    <span class="icon legend__arrow-up"></span>
                 </li>
                 <li class="legend__item legend__creative-date">
                     <span class="legend__text">
                         Дата и время создания
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort-arrow" class="legend__arrow">
+                    <span class="icon legend__arrow-up"></span>
                 </li>
                 <li class="legend__item legend__last-change">
                     <span class="legend__text">
                         Последние изменения
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort-arrow" class="legend__arrow">
+                    <span class="icon legend__arrow-up"></span>
                 </li>
                 <li class="legend__item legend__contacts">
                     <span class="legend__text">
                         Контакты
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort-arrow" class="legend__arrow">
                 </li>
                 <li class="legend__item legend__actions">
                     <span class="legend__text">
                         Действия
                     </span>
-                    <img src="./img/arrow_up.svg" alt="sort-arrow" class="legend__arrow">
                 </li>
             </ul>
         </div>
 
         <div class="content__table">
-            <ul class="table__list">
+            <!-- <ul class="table__list">
                 <li class="table__item">
                     <div class="table__id">1568621</div>
                     <div class="table__name">Asdwd Asddw DDWDWDW</div>
@@ -185,29 +185,43 @@
                         <button class="table__delete"><span class="icon table__delete_icon"></span> Удалить</button>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div>
         <button class="content__add-client button"> <span class="icon add-client_icon"></span> Добавить клиента</button>
     </section>
 
     <section class="modal">
-        <div class="modal__background_dark"></div>
-        <div class="modal__card">
+        <div class="modal__background modal__background_dark"></div>
+        <div class="modal__card card">
             <h2 class="card__title">Изменить данные <span class="card__id">ID: 123456</span></h2>
             <span class="icon card__cross_icon"></span>
-            <label class="card__label" >Фамилия* <input type="text" class="card__input"></label>
+            <label class="card__label">Фамилия* <input type="text" class="card__input"></label>
             <label class="card__label">Имя* <input type="text" class="card__input"></label>
             <label class="card__label">Отчество* <input type="text" class="card__input"></label>
-            <button class="card__add-contact">
-                <span class="icon card__add-contact_icon">
-                </span>
-                Добавить контакт
-            </button>
+            <div class="card__add-contact">
+                <div class="card__add-new-contact">
+                    <select name="" id="" class="add-new-contact__select">
+                        <option class="add-new-contact__option" value="tel">Телефон</option>
+                        <option class="add-new-contact__option" value="vk">Vk</option>
+                        <option class="add-new-contact__option" value="fb">Facebook</option>
+                        <option class="add-new-contact__option" value="mail">E-mail</option>
+                        <option class="add-new-contact__option" value="other">Другие контакты</option>
+                    </select>
+                    <input type="text" class="add-new-contact__input">
+                    <button class="add-new-contact__close"><span
+                            class="add-new-contact__close-icon icon"></span></button>
+                </div>
+                <button class="card__button"><span class="icon card__add-contact_icon">
+                    </span>Добавить контакт</button>
+            </div>
             <button class="card__save">Сохранить</button>
             <button class="card__delete">Удалить клиента</button>
         </div>
     </section>
 
+
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,9 @@
 :root {
   --text-grey: #b0b0b0;
   --firm-color: #9873ff;
+  --gray: #c8c5d1;
+  --red: #f06a4d;
+  --black: #333;
   --font: "Open Sans", sans-serif;
 }
 
@@ -60,7 +63,7 @@ html {
 
 .header__search {
   margin: 23px 0;
-  border: 1px solid #333;
+  border: 1px solid var(--black);
   padding: 15px;
   width: 518px;
   height: 44px;
@@ -79,7 +82,7 @@ html {
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
-  color: #333;
+  color: var(--black);
 }
 
 .legend__list {
@@ -93,9 +96,25 @@ html {
   color: var(--text-grey);
 }
 
+.legend__arrow-up {
+  width: 8px;
+  height: 8px;
+  background-image: url("../img/arrow_up.svg");
+}
+
+.legend__arrow-down {
+  width: 8px;
+  height: 8px;
+  background-image: url("../img/arrow_down.svg");
+}
+
 .legend__id {
   padding-bottom: 8px;
   width: 192px;
+}
+
+.legend__id:hover {
+  cursor: pointer;
 }
 
 .legend__name {
@@ -103,14 +122,26 @@ html {
   width: 279px;
 }
 
+.legend__name:hover {
+  cursor: pointer;
+}
+
 .legend__creative-date {
   padding-bottom: 8px;
   width: 175px;
 }
 
+.legend__creative-date:hover {
+  cursor: pointer;
+}
+
 .legend__last-change {
   padding-bottom: 8px;
   width: 173px;
+}
+
+.legend__last-change:hover {
+  cursor: pointer;
 }
 
 .legend__contacts {
@@ -135,10 +166,15 @@ html {
 .table__item {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #c8c5d1;
+  border-bottom: 1px solid var(--gray);
   padding: 0 20px;
   height: 60px;
   background-color: #fff;
+}
+
+.table__error {
+  margin: 0 auto;
+  color: var(--red);
 }
 
 .table__id {
@@ -179,7 +215,7 @@ html {
   background-color: transparent;
 }
 
-.table__contacts .icon:not(:nth-child(5n)) {
+.icon:not(:nth-child(5n)) {
   margin-right: 7px;
 }
 
@@ -226,6 +262,10 @@ html {
   background-color: inherit;
 }
 
+.table__actions button:hover {
+  cursor: pointer;
+}
+
 .table__change_icon {
   width: 12px;
   height: 12px;
@@ -265,7 +305,7 @@ html {
   top: 0;
   bottom: 0;
   z-index: -2;
-  background-color: #333;
+  background-color: var(--black);
   opacity: 0.2;
 }
 
@@ -298,6 +338,7 @@ html {
   position: absolute;
   right: 15px;
   top: 15px;
+  margin: 0;
   width: 29px;
   height: 29px;
   background-image: url("../img/cross.png");
@@ -314,21 +355,60 @@ html {
 .card__input {
   margin-bottom: 15px;
   border: none;
-  border-bottom: 1px solid #c8c5d1;
+  border-bottom: 1px solid var(--gray);
   padding: 4px 0;
   width: 100%;
   font-size: 14px;
   line-height: 19px;
 }
 
+.card__input__wrong {
+  border-bottom-color: var(--red);
+}
+
 .card__add-contact {
   margin: 25px 0;
   border: none;
-  padding: 8px;
+  padding: 25px 30px;
   width: 100%;
+  text-align: center;
+  background-color: var(--gray);
+}
+
+.card__add-new-contact {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.add-new-contact__select {
+  padding: 10px 0 10px 12px;
+  background-color: var(--gray);
+}
+
+.add-new-contact__input {
+  flex: 1 0 auto;
+  padding: 8px 0 8px 12px;
+  font-weight: 600;
   font-size: 14px;
   line-height: 19px;
-  background-color: #c8c5d1;
+  color: var(--black);
+}
+
+.add-new-contact__close {
+  padding: 12px 8px;
+}
+
+.add-new-contact__close-icon {
+  width: 12px;
+  height: 12px;
+  background-image: url("../img/close-add-contact.png");
+}
+
+.card__button {
+  border: none;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: inherit;
 }
 
 .card__add-contact_icon {
@@ -354,4 +434,12 @@ html {
   line-height: 16px;
   text-decoration: underline;
   background-color: inherit;
+}
+
+.tippy-box {
+  border-radius: 0;
+  padding: 8px 18px;
+  font-size: 12px;
+  line-height: 18px;
+  background-color: var(--black);
 }
