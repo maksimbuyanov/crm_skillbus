@@ -1,5 +1,6 @@
 "use strict"
 import sortArr from './sort.js'
+import { openModal, closeModal } from './form.js';
 
 const API = 'http://localhost:3000/api/clients'
 const table = document.querySelector('.content__table');
@@ -9,6 +10,18 @@ const legendCreativeDate = document.querySelector('.legend__creative-date');
 const legendLastChange = document.querySelector('.legend__last-change');
 const legendContacts = document.querySelector('.legend__contacts');
 const searchInput = document.querySelector('.header__search');
+const addClientBtn = document.querySelector('.content__add-client');
+const modal = document.querySelector('.modal');
+const modalWindow = document.querySelector('.modal__card');
+const modalBg = document.querySelector('.modal__background');
+
+addClientBtn.addEventListener('click', () => {
+  openModal(modal)
+})
+
+modalBg.addEventListener('click', () => {
+  closeModal()
+})
 
 let arrForRender = [];
 let sortParam = { type: 'id', direction: 'up' };
@@ -53,11 +66,23 @@ async function addClient() {
   console.log(data);
 };
 
-async function getClients(filterValue = null) {
+async function getClients(param = null) {
   let url = API
-  if (filterValue) {
-    const query = `?search=${filterValue}`
-    url += query;
+  const type = typeof param;
+  switch (type) {
+    case ('string'):
+      const query = `?search=${param}`
+      url += query;
+      break;
+
+    case ('number'):
+      debugger
+      const id = `/${param}`
+      url += id;
+      break;
+
+    default:
+      break;
   }
   const response = await fetch(url, {
     method: 'GET',
@@ -67,15 +92,12 @@ async function getClients(filterValue = null) {
   return data;
 };
 
-
 async function renderFirstOpen() {
   loadSortParam()
   let arrForSortedFn = await getClients();
   const sortedArr = sortArr(arrForSortedFn, sortParam);
   renderClients(sortedArr)
 };
-
-
 
 function renderClients(array) {
   (function removeAllChildren() {
@@ -133,10 +155,9 @@ function createTableLine(obj) {
   let actions = document.createElement('div');
   actions.classList.add('table__actions');
   const buttonChange = createButton('change');
-  buttonChange.addEventListener('click', () => {
-    console.log(obj.id)
-    console.log(this)
-
+  buttonChange.addEventListener('click', async () => {
+    const person = await getClients(obj.id)
+    openModal(modal, person)
   })
   const buttonDelete = createButton('delete');
   buttonDelete.addEventListener('click', () => {
@@ -380,6 +401,8 @@ async function deleteClient(id) {
     console.log('Ошибка во время удаления')
   }
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFirstOpen();

@@ -293,9 +293,14 @@ html {
 }
 
 .modal {
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100vw;
   height: 100vw;
+}
+
+.modal_none {
+  display: none;
 }
 
 .modal__background_dark {
@@ -304,9 +309,9 @@ html {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: -2;
+  z-index: 2;
   background-color: var(--black);
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .modal__card {
