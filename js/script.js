@@ -76,7 +76,6 @@ async function getClients(param = null) {
       break;
 
     case ('number'):
-      debugger
       const id = `/${param}`
       url += id;
       break;
@@ -156,7 +155,7 @@ function createTableLine(obj) {
   actions.classList.add('table__actions');
   const buttonChange = createButton('change');
   buttonChange.addEventListener('click', async () => {
-    const person = await getClients(obj.id)
+    const person = await getClients(+obj.id)
     openModal(modal, person)
   })
   const buttonDelete = createButton('delete');
