@@ -2,77 +2,77 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
 
-    <script type="module" defer src="./js/script.js"></script>
+  <script type="module" defer src="./js/script.js"></script>
 
-    <title>CRM</title>
+  <title>CRM</title>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <a href="#" class="header__logo">
-                skb.
-            </a>
-            <input type="text" class="header__search" placeholder="Введите запрос">
-        </div>
-    </header>
-    <section class="container content">
-        <h1 class="content__title">
-            Клиенты
-        </h1>
+  <header class="header">
+    <div class="container">
+      <a href="#" class="header__logo">
+        skb.
+      </a>
+      <input type="text" class="header__search" placeholder="Введите запрос">
+    </div>
+  </header>
+  <section class="container content">
+    <h1 class="content__title">
+      Клиенты
+    </h1>
 
-        <div class="content__legend">
-            <ul class="legend__list">
-                <li class="legend__item legend__id">
-                    <span class="legend__text">
-                        ID
-                    </span>
-                    <span class="icon legend__arrow-up"></span>
-                </li>
-                <li class="legend__item  legend__name">
-                    <span class="legend__text">
-                        Фамилия Имя Отчество
-                    </span>
-                    <span class="icon legend__arrow-up"></span>
-                </li>
-                <li class="legend__item legend__creative-date">
-                    <span class="legend__text">
-                        Дата и время создания
-                    </span>
-                    <span class="icon legend__arrow-up"></span>
-                </li>
-                <li class="legend__item legend__last-change">
-                    <span class="legend__text">
-                        Последние изменения
-                    </span>
-                    <span class="icon legend__arrow-up"></span>
-                </li>
-                <li class="legend__item legend__contacts">
-                    <span class="legend__text">
-                        Контакты
-                    </span>
-                </li>
-                <li class="legend__item legend__actions">
-                    <span class="legend__text">
-                        Действия
-                    </span>
-                </li>
-            </ul>
-        </div>
+    <div class="content__legend">
+      <ul class="legend__list">
+        <li class="legend__item legend__id">
+          <span class="legend__text">
+            ID
+          </span>
+          <span class="icon legend__arrow-up"></span>
+        </li>
+        <li class="legend__item  legend__name">
+          <span class="legend__text">
+            Фамилия Имя Отчество
+          </span>
+          <span class="icon legend__arrow-up"></span>
+        </li>
+        <li class="legend__item legend__creative-date">
+          <span class="legend__text">
+            Дата и время создания
+          </span>
+          <span class="icon legend__arrow-up"></span>
+        </li>
+        <li class="legend__item legend__last-change">
+          <span class="legend__text">
+            Последние изменения
+          </span>
+          <span class="icon legend__arrow-up"></span>
+        </li>
+        <li class="legend__item legend__contacts">
+          <span class="legend__text">
+            Контакты
+          </span>
+        </li>
+        <li class="legend__item legend__actions">
+          <span class="legend__text">
+            Действия
+          </span>
+        </li>
+      </ul>
+    </div>
 
-        <div class="content__table">
-            <!-- <ul class="table__list">
+    <div class="content__table">
+      <!-- <ul class="table__list">
                 <li class="table__item">
                     <div class="table__id">1568621</div>
                     <div class="table__name">Asdwd Asddw DDWDWDW</div>
@@ -186,80 +186,39 @@
                     </div>
                 </li>
             </ul> -->
-        </div>
-        <button class="content__add-client button"> <span class="icon add-client_icon"></span> Добавить клиента</button>
-    </section>
+    </div>
+    <button class="content__add-client button"> <span class="icon add-client_icon"></span> Добавить клиента</button>
+  </section>
 
-    <section class="modal modal_none">
-        <div class="modal__background modal__background_dark"></div>
-        <div class="modal__card card">
-            <h2 class="card__title">Изменить данные <span class="card__id">ID: 123456</span></h2>
-            <span class="icon card__cross_icon"></span>
-            <label class="card__label">
-                Фамилия*
-                <input type="text" class="card__input card__input_surname">
-            </label>
-            <label class="card__label">
-                Имя*
-                <input type="text" class="card__input card__input_name">
-            </label>
-            <label class="card__label">
-                Отчество*
-                <input type="text" class="card__input card__input_last-name">
-            </label>
-            <div class="card__add-contact">
-                <div class="card__add-new-contact">
-                    <!-- <div class="add-new-contact__wrapper">
-                        <select class="add-new-contact__select">
-                            <option class="add-new-contact__option" value="tel">Телефон</option>
-                            <option class="add-new-contact__option" value="vk">Vk</option>
-                            <option class="add-new-contact__option" value="fb">Facebook</option>
-                            <option class="add-new-contact__option" value="mail">E-mail</option>
-                            <option class="add-new-contact__option" value="other">Другие контакты</option>
-                        </select>
-                        <input type="text" class="add-new-contact__input">
-                        <button class="add-new-contact__close">
-                            <span class="add-new-contact__close-icon icon"></span>
-                        </button>
-                    </div>
-                    <div class="add-new-contact__wrapper">
-                        <select class="add-new-contact__select">
-                            <option class="add-new-contact__option" value="tel">Телефон</option>
-                            <option class="add-new-contact__option" value="vk">Vk</option>
-                            <option class="add-new-contact__option" value="fb">Facebook</option>
-                            <option class="add-new-contact__option" value="mail">E-mail</option>
-                            <option class="add-new-contact__option" value="other">Другие контакты</option>
-                        </select>
-                        <input type="text" class="add-new-contact__input">
-                        <button class="add-new-contact__close">
-                            <span class="add-new-contact__close-icon icon"></span>
-                        </button>
-                    </div>
-                    <div class="add-new-contact__wrapper">
-                        <select class="add-new-contact__select">
-                            <option class="add-new-contact__option" value="tel">Телефон</option>
-                            <option class="add-new-contact__option" value="vk">Vk</option>
-                            <option class="add-new-contact__option" value="fb">Facebook</option>
-                            <option class="add-new-contact__option" value="mail">E-mail</option>
-                            <option class="add-new-contact__option" value="other">Другие контакты</option>
-                        </select>
-                        <input type="text" class="add-new-contact__input">
-                        <button class="add-new-contact__close">
-                            <span class="add-new-contact__close-icon icon"></span>
-                        </button>
-                    </div> -->
-                </div>
-                <button class="card__button"><span class="icon card__add-contact_icon">
-                    </span>Добавить контакт</button>
-            </div>
-            <button class="card__save">Сохранить</button>
-            <button class="card__delete">Удалить клиента</button>
-        </div>
-    </section>
+  <section class="modal modal_none">
+    <div class="modal__background modal__background_dark"></div>
+    <div class="modal__card card">
+      <h2 class="card__title">Изменить данные</h2>
+      <span class="icon card__cross_icon"></span>
+      <label class="card__label">
+        Фамилия*
+        <input type="text" class="card__input card__input_surname">
+      </label>
+      <label class="card__label">
+        Имя*
+        <input type="text" class="card__input card__input_name">
+      </label>
+      <label class="card__label">
+        Отчество*
+        <input type="text" class="card__input card__input_last-name">
+      </label>
+      <div class="card__add-contact">
+        <button class="card__button"><span class="icon card__add-contact_icon">
+          </span>Добавить контакт</button>
+      </div>
+      <button class="card__save">Сохранить</button>
+      <button class="card__delete">Удалить клиента</button>
+    </div>
+  </section>
 
 
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 </body>
 
 </html>
