@@ -1,3 +1,5 @@
+import { addNewPerson, deletePerson } from "./api.js";
+
 let modal;
 const MAX_CONTACT_COUNT = 10;
 const cross = document.querySelector('.card__cross_icon')
@@ -8,10 +10,11 @@ const addContactButton = document.querySelector('.card__button')
 // const contactType = document.querySelector('.add-new-contact__select')
 // const contactInput = document.querySelector('.add-new-contact__input')
 // const deletContact = document.querySelector('.add-new-contact__close')
-// const deletePerson = document.querySelector('.card__delete')
-// const savePerson = document.querySelector('.card__save')
+const deletePersonBtn = document.querySelector('.card__delete')
+const savePersonBtn = document.querySelector('.card__save')
 const title = document.querySelector('.card__title')
 const contactBlick = document.querySelector('.card__add-contact')
+let personId
 
 cross.addEventListener('click', closeModal)
 
@@ -27,6 +30,7 @@ export function openModal(obj, persone = false) {
     title.textContent = `Изменить данные `
     const modalId = document.createElement('span')
     modalId.textContent = `ID: ${persone.id}`
+    personId = persone.id
     modalId.classList.add('card__id')
     title.append(modalId)
 
@@ -38,31 +42,28 @@ export function openModal(obj, persone = false) {
 function renderContact(arr) {
   arr.forEach(item => {
     const line = createContactLine(item);
-    line.children[line.children.length-1].addEventListener('click', () => {
-
+    line.children[line.children.length - 1].addEventListener('click', () => {
       const arr = document.querySelectorAll('.add-new-contact__wrapper')
       let el
-      arr.forEach(item=> {
+      arr.forEach(item => {
         if (item.childNodes[1].value === line.childNodes[1].value) {
           el = item
         }
-
       })
       el.remove()
-
     })
     contactBlick.prepend(line);
   });
-  if (contactBlick.childElementCount>MAX_CONTACT_COUNT) {
-    contactBlick.children[contactBlick.childElementCount-1].remove()
+  if (contactBlick.childElementCount > MAX_CONTACT_COUNT) {
+    addContactButton.classList.add('modal_none')
   }
 }
 
-addContactButton.addEventListener('click',()=> {
-  const line = createContactLine({value:''})
+addContactButton.addEventListener('click', () => {
+  const line = createContactLine({ value: '' })
   contactBlick.prepend(line)
-  if (contactBlick.childElementCount>MAX_CONTACT_COUNT) {
-    contactBlick.children[contactBlick.childElementCount-1].remove()
+  if (contactBlick.childElementCount > MAX_CONTACT_COUNT) {
+    addContactButton.classList.add('modal_none')
   }
 })
 
@@ -108,15 +109,56 @@ function createOption(val, text, classList) {
   return option
 }
 
+savePersonBtn.addEventListener('click', () => {
+  savePerson()
+})
+
+function savePerson() {
+  const serName = inputSurname.value
+  const name = inputName.value
+  const lastName = inputLastName.value
+  const contacts = []
+  const arr = document.querySelectorAll('.add-new-contact__wrapper')
+  arr.forEach(item => {
+    const contact = {
+      type: item.children[0].value,
+      value: item.children[1].value
+    }
+    contacts.push(contact)
+  })
+  addNewPerson({
+    name: name,
+    surname: serName,
+    lastName: lastName,
+    contacts: contacts
+  })
+    .then(() => {
+      closeModal()
+    })
+    .catch((error) => console.log(error))
+
+}
+
+deletePersonBtn.addEventListener('click', () => {
+  const result = deletePerson(personId)
+    .then(() => {
+      closeModal()
+    })
+    .catch((error) => console.log(error))
+})
+
 export function closeModal() {
   modal.classList.add('modal_none');
   clearForm()
 }
 
 function clearForm() {
+  personId = null;
+  title.textContent = 'Новый клиент'
   inputSurname.value = '';
   inputName.value = '';
   inputLastName.value = '';
+  addContactButton.classList.remove('modal_none')
   const arr = document.querySelectorAll('.add-new-contact__wrapper')
   arr.forEach(node => {
     node.remove()

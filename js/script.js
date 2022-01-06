@@ -1,6 +1,7 @@
 "use strict"
 import sortArr from './sort.js'
-import { openModal, closeModal } from './form.js';
+import { openModal, closeModal } from './form.js'
+import { deletePerson } from "./api.js"
 
 const API = 'http://localhost:3000/api/clients'
 const table = document.querySelector('.content__table');
@@ -160,7 +161,11 @@ function createTableLine(obj) {
   })
   const buttonDelete = createButton('delete');
   buttonDelete.addEventListener('click', () => {
-    deleteClient(obj.id);
+    const result = deletePerson(obj.id)
+    .then(()=>{
+      renderFirstOpen()
+    })
+    .catch((error)=>console.log(error))
   })
   actions.append(buttonChange, buttonDelete);
   item.append(actions);
