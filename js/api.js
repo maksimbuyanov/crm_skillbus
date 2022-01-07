@@ -18,3 +18,13 @@ export async function addNewPerson(obj) {
   });
   return response
 }
+
+export async function patchPerson(obj, id) {
+  let url = API+`/${id}`
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({...obj})
+  });
+  return response
+}

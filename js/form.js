@@ -1,4 +1,4 @@
-import { addNewPerson, deletePerson } from "./api.js";
+import { addNewPerson, deletePerson, patchPerson } from "./api.js";
 
 let modal;
 const MAX_CONTACT_COUNT = 10;
@@ -33,6 +33,8 @@ export function openModal(obj, persone = false) {
     personId = persone.id
     modalId.classList.add('card__id')
     title.append(modalId)
+    deletePersonBtn.classList.remove('modal_none')
+
 
     renderContact(persone.contacts)
   }
@@ -126,17 +128,30 @@ function savePerson() {
     }
     contacts.push(contact)
   })
-  addNewPerson({
-    name: name,
-    surname: serName,
-    lastName: lastName,
-    contacts: contacts
-  })
-    .then(() => {
-      closeModal()
-    })
-    .catch((error) => console.log(error))
 
+  if (personId) {
+    patchPerson({
+      name: name,
+      surname: serName,
+      lastName: lastName,
+      contacts: contacts
+    }, personId)
+      .then(() => {
+        closeModal()
+      })
+      .catch((error) => console.log(error))
+  } else {
+    addNewPerson({
+      name: name,
+      surname: serName,
+      lastName: lastName,
+      contacts: contacts
+    })
+      .then(() => {
+        closeModal()
+      })
+      .catch((error) => console.log(error))
+  }
 }
 
 deletePersonBtn.addEventListener('click', () => {
@@ -159,6 +174,7 @@ function clearForm() {
   inputName.value = '';
   inputLastName.value = '';
   addContactButton.classList.remove('modal_none')
+  deletePersonBtn.classList.add('modal_none')
   const arr = document.querySelectorAll('.add-new-contact__wrapper')
   arr.forEach(node => {
     node.remove()

@@ -298,10 +298,7 @@ html {
   position: absolute;
   top: 0;
   width: 100vw;
-}
-
-.modal_none {
-  display: none;
+  min-height: 100vh;
 }
 
 .modal__background_dark {
@@ -448,4 +445,32 @@ html {
   line-height: 18px;
   background-color: var(--black);
   border-radius: 0;
+}
+
+
+.modal__confirmation {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  padding: 30px 0;
+  margin: 168px auto 0;
+  background-color: #fff;
+  align-items: center;
+
+}
+
+.card__subtitle {
+  max-width: 275px;
+  font-size: 14px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+
+.modal_none {
+  display: none;
 }
